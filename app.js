@@ -9,7 +9,7 @@ require("dotenv").config();
 require("ejs");
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4660;
 
 const { sequelize } = require("./database");
 
