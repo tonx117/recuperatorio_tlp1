@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     inputnombre.value = nombre;
     inputcodigo.value = codigo;
-    inputfecha.value = fecha.split("T")[0];
+    inputfecha.value = fecha;
   } catch (error) {
     console.log(error);
     Swal.fire({
@@ -43,7 +43,7 @@ updateReservaForm.addEventListener("submit", async (e) => {
   const reservaId = updateReservaForm.dataset.id;
 
   const formData = {
-    nombre: e.target.nombre.value,
+    nombre: e.target.nombree.value,
     codigo: e.target.codigo.value,
     fecha: e.target.fecha.value,
   };

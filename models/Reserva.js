@@ -28,6 +28,6 @@ const Reserva = sequelize.define(
   }
 );
 
-Reserva.sync({ force: true });
+Reserva.sync({ force: false });
 
 module.exports = Reserva;

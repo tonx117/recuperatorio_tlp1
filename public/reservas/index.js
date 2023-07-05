@@ -20,19 +20,16 @@ const showReservas = (reservas) => {
     `;
     return;
   }
-
-  listadoReservas.innerHTML = reservas
+  const tabla = document.querySelector("#listadoReservas");
+  tabla.innerHTML = reservas
     .map((reserva) => {
-      const fechaParts = reserva.fecha.split("T")[0].split("-");
-      const formattedfecha = `${fechaParts[2]}/${fechaParts[1]}/${fechaParts[0]}`;
 
       return `
           <tr>
               <th scope="row">${reserva.id}</th>
               <td>${reserva.nombre}</td>
               <td>${reserva.codigo}</td>
-              <td>${formattedfecha}</td>
-              <td>
+              <td>${dayjs(reserva.fecha).format("DD/MM/YYYY  HH:mm")}</td>
                 <a href="/reservas/${reserva.id}/edit" class="btn btn-outline-success">Editar</a>
                 <button onclick="deleteReserva(event)" class="btn btn-outline-danger" data-id="${reserva.id}">Eliminar</button>
               </td>
@@ -87,12 +84,9 @@ const deleteReserva = async (event) => {
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const reservas = await fetchReservas();
-    showReservas(reservas);
+    return showReservas(reservas);
   } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Hubo un error al cargar las reservas",
-    });
+    
+console.log(error);
   }
 });
